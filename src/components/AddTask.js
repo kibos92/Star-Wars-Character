@@ -1,58 +1,99 @@
 import { useState } from 'react'
+import React, { Component } from 'react'
+import Select from 'react-select'
+
+
+
+
 
 const AddTask = ({ onAdd }) => {
-  const [text, setText] = useState('')
-  const [day, setDay] = useState('')
-  const [reminder, setReminder] = useState(false)
-
+  const [name, setName] = useState('')
+  const [height, setHeight] = useState('')
+  const [mass, setMass] = useState('')
+  const [eye_color, setEye_color] = useState('')
+  const [gender, setGender] = useState('')
+  
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (!text) {
+    if (!name) {
       alert('Please add a task')
       return
     }
 
-    onAdd({ text, day, reminder })
+    onAdd({ name, height, mass, eye_color, gender })
 
-    setText('')
-    setDay('')
-    setReminder(false)
+    setName('')
+    setHeight('')
+    setMass('')
+    setEye_color('')
+    setGender('')
   }
+      const colors = 
+[
+  {value: 'green', label: 'Green'},
+  {value: 'blue', label: 'Blue'},
+  {value: 'yellow', label: 'Yellow'},
+  {value: 'brown', label: 'Brown'},
+  {value: 'black', label: 'Black'}
+];
+
+const genders = 
+[
+  {value: 'male', label: 'Male'},
+  {value: 'female', label: 'Female'},
+];
+
 
   return (
+    
     <form className='add-form' onSubmit={onSubmit}>
       <div className='form-control'>
-        <label>Task</label>
+        <label>Name</label>
         <input
-          type='text'
-          placeholder='Add Task'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          type='name'
+          placeholder='Add Name'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
       <div className='form-control'>
-        <label>Day & Time</label>
+        <label>Height</label>
         <input
           type='text'
-          placeholder='Add Day & Time'
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
+          placeholder='Add Height'
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
         />
       </div>
-      <div className='form-control form-control-check'>
-        <label>Set Reminder</label>
+      <div className='form-control'>
+        <label>Mass</label>
         <input
-          type='checkbox'
-          checked={reminder}
-          value={reminder}
-          onChange={(e) => setReminder(e.currentTarget.checked)}
+          type='text'
+          placeholder='Add Mass'
+          checked={mass}
+          value={mass}
+          onChange={(e) => setMass(e.target.value)}
         />
+      </div>
+      <div className='form-control'>
+        <label>Eye Color</label>
+        
+        <Select options={colors} />
+      </div>
+     
+     
+      <div className='form-control'>
+        <label>Gender</label>
+        <Select options={genders} />
       </div>
 
       <input type='submit' value='Save Task' className='btn btn-block' />
+    
+
+
     </form>
   )
 }
-
+  
 export default AddTask
