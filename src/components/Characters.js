@@ -1,6 +1,6 @@
 import Character from './Character'
 
-const Characters = ({ characters, onDelete }) => {
+const Characters = ({ characters, onDelete}) => {
   return (
     <>
       {characters.map((character, index) => (

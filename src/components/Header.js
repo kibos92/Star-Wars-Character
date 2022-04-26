@@ -2,13 +2,17 @@ import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
 import Nav from './Nav'
 
-const Header = ({ title, onAdd, showAdd }) => {
+const Header = ({ title, onAdd, showAdd, onFilter, showFilter, onSort, showSort }) => {
   const location = useLocation()
   return (
     <header className='header'>
       <h1>{title}</h1>
         {location.pathname === '/' && (
-        <Nav onAdd={onAdd} showAdd={showAdd} />
+        <Nav 
+        onAdd={onAdd} showAdd={showAdd} 
+        onFilter={onFilter} showFilter={showFilter} 
+        onSort={onSort} showSort={showSort}
+        />
       )}
     </header>
   )

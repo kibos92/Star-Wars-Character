@@ -2,10 +2,6 @@ import { useState } from 'react'
 import Select from 'react-select'
 import { v4 as uuidv4 } from 'uuid'
 
-
-
-
-
 const AddCharacter = ({ onAdd }) => {
   const [id, setId] = useState('')
   const [name, setName] = useState('')
@@ -87,8 +83,6 @@ const genders =
           options={colors}
         />
       </div>
-     
-     
       <div className='form-control'>
         <label>Gender</label>
         <Select
@@ -99,9 +93,6 @@ const genders =
       </div>
 
       <input type='submit' value='Save Task' className='btn btn-block' />
-    
-
-
     </form>
   )
 }

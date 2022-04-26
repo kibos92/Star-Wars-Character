@@ -4,10 +4,14 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Characters from './components/Characters'
 import AddCharacter from './components/AddCharacter'
+import Sort from './components/Sort'
+import Filter from './components/Filter'
 import About from './components/About'
 
 const App = () => {
   const [showAddCharacter, setShowAddCharacter] = useState(false)
+  const [showFilterCharacter, setShowFilterCharacter] = useState(false)
+  const [showSortCharacter, setShowSortCharacter] = useState(false)
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
@@ -55,6 +59,10 @@ const App = () => {
         <Header
           onAdd={() => setShowAddCharacter(!showAddCharacter)}
           showAdd={showAddCharacter}
+          onFilter={() => setShowFilterCharacter(!showFilterCharacter)}
+          showFilter={showFilterCharacter}
+          onSort={() => setShowSortCharacter(!showSortCharacter)}
+          showSort={showSortCharacter}
         />
         <Routes>
           <Route
@@ -62,6 +70,8 @@ const App = () => {
             element={
               <>
                 {showAddCharacter && <AddCharacter onAdd={addCharacter} />}
+                {showFilterCharacter && <Filter onFilter={Filter} />}
+                {showSortCharacter && <Sort onSort={Sort} />}
                 {characters.length > 0 ? (
                   <Characters
                     characters={characters}

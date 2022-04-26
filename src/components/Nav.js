@@ -1,8 +1,6 @@
 import Button from "./Button"
-import Filter from "./Filter"
-import Sort from "./Sort"
 
-const Nav = ({onAdd, showAdd }) => {
+const Nav = ({onAdd, showAdd, onSort, showSort, onFilter, showFilter }) => {
   return (
     <>
     <Button
@@ -10,8 +8,16 @@ const Nav = ({onAdd, showAdd }) => {
         text={showAdd ? 'Close' : 'Add'}
         onClick={onAdd} 
     />
-    <Filter />
-    <Sort />
+    <Button
+        color={showFilter ? 'red' : 'green'}
+        text={showFilter ? 'Close' : 'Filter'}
+        onClick={onFilter} 
+    />
+    <Button
+        color={showSort ? 'red' : 'green'}
+        text={showSort ? 'Close' : 'Sort'}
+        onClick={onSort} 
+    />
     </>
   )
 }
