@@ -6,15 +6,19 @@ const Filter = ({onFilter}) => {
     const [massMin, setMassMin] = useState('')
     const [massMax, setMassMax] = useState('')
 
-    //onFilter({heightMin, heightMax, massMin, massMax})
+    const onSubmit = (e) => {
+      e.preventDefault()
 
-    //setHeightMin('')
-    //setHeightMax('')
-    //setMassMin('')
-    //setMassMax('')
+      onFilter({heightMin, heightMax, massMin, massMax})
+
+      setHeightMin('')
+      setHeightMax('')
+      setMassMin('')
+      setMassMax('')
+    }
 
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
         <label>Height Min: </label>
         <input 
@@ -51,6 +55,7 @@ const Filter = ({onFilter}) => {
           onChange={(e) => setMassMax(e.target.value)}
           />
       </div>
+      <input type='submit' value='Save Filter' className='btn btn-block' />
     </form>
   )
 }

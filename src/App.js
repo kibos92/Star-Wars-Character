@@ -52,7 +52,7 @@ const App = () => {
       ? setCharacters(characters.filter((character) => character.id !== id))
       : alert('Error Deleting This Character')
   }
-
+ 
   return (
     <Router>
       <div className='container'>

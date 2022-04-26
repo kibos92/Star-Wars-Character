@@ -6,15 +6,19 @@ const Sort = ({onSort}) => {
     const [massAsc, setMassAsc] = useState('')
     const [massDesc, setMassDesc] = useState('')
 
-    //onFilter({heightAsc, heightDesc, massAsc, massDesc})
+    const onSubmit = (e) => {
+      e.preventDefault()
 
-    //setHeightAsc('')
-    //setHeightDesc('')
-    //setMassAsc('')
-    //setMassDesc('')
+      onSort({heightAsc, heightDesc, massAsc, massDesc})
 
+      setHeightAsc('')
+      setHeightDesc('')
+      setMassAsc('')
+      setMassDesc('')
+    }
+    
   return (
-    <form className='add-form'>
+    <form className='add-form' onSubmit={onSubmit}>
       <div className='form-control form-control-check'>
         <label>Height Ascending</label>
         <input
@@ -51,6 +55,7 @@ const Sort = ({onSort}) => {
           onChange={(e) => setMassDesc(e.currentTarget.checked)}
         />
       </div>
+      <input type='submit' value='Sort Character' className='btn btn-block' />
     </form>
   )
 }
