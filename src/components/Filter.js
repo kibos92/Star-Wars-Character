@@ -55,7 +55,7 @@ const Filter = ({onFilter}) => {
           onChange={(e) => setMassMax(e.target.value)}
           />
       </div>
-      <input type='submit' value='Save Filter' className='btn btn-block' />
+      <input type='submit' value='Use Filter' className='btn btn-block' />
     </form>
   )
 }

@@ -55,7 +55,7 @@ const Sort = ({onSort}) => {
           onChange={(e) => setMassDesc(e.currentTarget.checked)}
         />
       </div>
-      <input type='submit' value='Sort Character' className='btn btn-block' />
+      <input type='submit' value='Use Sort' className='btn btn-block' />
     </form>
   )
 }
