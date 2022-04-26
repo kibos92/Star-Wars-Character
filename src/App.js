@@ -2,80 +2,73 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Tasks from './components/Tasks'
-import AddTask from './components/AddTask'
+import Characters from './components/Characters'
+import AddCharacter from './components/AddCharacter'
 import About from './components/About'
 
 const App = () => {
-  const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState([])
+  const [showAddCharacter, setShowAddCharacter] = useState(false)
+  const [characters, setCharacters] = useState([])
 
   useEffect(() => {
-    const getTasks = async () => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+    const getCharacters = async () => {
+      const charactersFromServer = await fetchCharacters()
+      setCharacters(charactersFromServer)
     }
 
-    getTasks()
+    getCharacters()
   }, [])
 
-  const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks')
+  const fetchCharacters = async () => {
+    const res = await fetch('http://localhost:5000/characters')
     const data = await res.json()
 
     return data
   }
 
-  const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
-    const data = await res.json()
-
-    return data
-  }
-
-  const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks', {
+  const addCharacter = async (character) => {
+    const res = await fetch('http://localhost:5000/characters', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify(task),
+      body: JSON.stringify(character),
     })
 
     const data = await res.json()
 
-    setTasks([...tasks, data])
+    setCharacters([...characters, data])
   }
-  const deleteTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+  const deleteCharacter = async (id) => {
+    const res = await fetch(`http://localhost:5000/characters/${id}`, {
       method: 'DELETE',
     })
 
     res.status === 200
-      ? setTasks(tasks.filter((task) => task.id !== id))
-      : alert('Error Deleting This Task')
+      ? setCharacters(characters.filter((character) => character.id !== id))
+      : alert('Error Deleting This Character')
   }
 
   return (
     <Router>
       <div className='container'>
         <Header
-          onAdd={() => setShowAddTask(!showAddTask)}
-          showAdd={showAddTask}
+          onAdd={() => setShowAddCharacter(!showAddCharacter)}
+          showAdd={showAddCharacter}
         />
         <Routes>
           <Route
             path='/'
             element={
               <>
-                {showAddTask && <AddTask onAdd={addTask} />}
-                {tasks.length > 0 ? (
-                  <Tasks
-                    tasks={tasks}
-                    onDelete={deleteTask}
+                {showAddCharacter && <AddCharacter onAdd={addCharacter} />}
+                {characters.length > 0 ? (
+                  <Characters
+                    characters={characters}
+                    onDelete={deleteCharacter}
                   />
                 ) : (
-                  'No Tasks To Show'
+                  'No Character To Show'
                 )}
               </>
             }

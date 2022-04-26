@@ -6,7 +6,7 @@ import Select from 'react-select'
 
 
 
-const AddTask = ({ onAdd }) => {
+const AddCharacter = ({ onAdd }) => {
   const [name, setName] = useState('')
   const [height, setHeight] = useState('')
   const [mass, setMass] = useState('')
@@ -96,4 +96,4 @@ const genders =
   )
 }
   
-export default AddTask
+export default AddCharacter
