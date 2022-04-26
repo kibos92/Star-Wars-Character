@@ -44,6 +44,7 @@ const genders =
 [
   {value: 'male', label: 'Male'},
   {value: 'female', label: 'Female'},
+  {value: 'n/a', label: 'N/A'}
 ];
 
 
@@ -80,18 +81,19 @@ const genders =
       </div>
       <div className='form-control'>
         <label>Eye Color</label>
-        
-        <Select 
-          //onChange={(e) => setEye_color(e.target.value)}
-          options={colors} 
+        <Select
+          placeholder="Select Eye color"
+          onChange={(e) => setEye_color(e.value)}
+          options={colors}
         />
       </div>
      
      
       <div className='form-control'>
         <label>Gender</label>
-        <Select 
-          //onChange={(e) => setGender(e.target.value)}
+        <Select
+          placeholder="Select Gender"
+          onChange={(e) => setGender(e.value)}
           options={genders} 
         />
       </div>
