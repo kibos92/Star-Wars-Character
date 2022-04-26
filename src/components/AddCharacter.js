@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import React, { Component } from 'react'
 import Select from 'react-select'
+import { v4 as uuidv4 } from 'uuid'
 
 
 
 
 
 const AddCharacter = ({ onAdd }) => {
+  const [id, setId] = useState('')
   const [name, setName] = useState('')
   const [height, setHeight] = useState('')
   const [mass, setMass] = useState('')
@@ -21,8 +22,9 @@ const AddCharacter = ({ onAdd }) => {
       return
     }
 
-    onAdd({ name, height, mass, eye_color, gender })
+    onAdd({ id, name, height, mass, eye_color, gender })
 
+    setId(uuidv4())
     setName('')
     setHeight('')
     setMass('')
@@ -79,13 +81,19 @@ const genders =
       <div className='form-control'>
         <label>Eye Color</label>
         
-        <Select options={colors} />
+        <Select 
+          //onChange={(e) => setEye_color(e.target.value)}
+          options={colors} 
+        />
       </div>
      
      
       <div className='form-control'>
         <label>Gender</label>
-        <Select options={genders} />
+        <Select 
+          //onChange={(e) => setGender(e.target.value)}
+          options={genders} 
+        />
       </div>
 
       <input type='submit' value='Save Task' className='btn btn-block' />
