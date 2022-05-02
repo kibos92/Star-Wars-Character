@@ -31,6 +31,14 @@
       "mass": "67",
       "eye_color": "yellow",
       "gender": "n/a"
+    },
+    {
+      "id": "PSTZzY8",
+      "name": "Han Solo",
+      "height": "190",
+      "mass": "100",
+      "eye_color": "brown",
+      "gender": "female"
     }
   ]
 }

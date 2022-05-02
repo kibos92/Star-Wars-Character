@@ -13,11 +13,13 @@ const App = () => {
   const [showFilterCharacter, setShowFilterCharacter] = useState(false)
   const [showSortCharacter, setShowSortCharacter] = useState(false)
   const [characters, setCharacters] = useState([])
+  const [charactersToFilter, setCharactersToFilter] = useState([])
 
   useEffect(() => {
     const getCharacters = async () => {
       const charactersFromServer = await fetchCharacters()
       setCharacters(charactersFromServer)
+      setCharactersToFilter(charactersFromServer)
     }
 
     getCharacters()
@@ -52,6 +54,16 @@ const App = () => {
       ? setCharacters(characters.filter((character) => character.id !== id))
       : alert('Error Deleting This Character')
   }
+
+  const filter = (filters) => {
+    const filteredCharacters = charactersToFilter.filter((character) => {
+     return Number(character.height) >= Number(filters.heightMin)
+      && Number(character.height) <= Number(filters.heightMax)
+      && Number(character.mass) >= Number(filters.massMin)
+      && Number(character.mass) <= Number(filters.massMax)
+    })
+    setCharacters(filteredCharacters)
+  }
  
   return (
     <Router>
@@ -70,7 +82,7 @@ const App = () => {
             element={
               <>
                 {showAddCharacter && <AddCharacter onAdd={addCharacter} />}
-                {showFilterCharacter && <Filter onFilter={Filter} />}
+                {showFilterCharacter && <Filter onFilter={filter} />}
                 {showSortCharacter && <Sort onSort={Sort} />}
                 {characters.length > 0 ? (
                   <Characters

@@ -22,7 +22,7 @@ const Filter = ({onFilter}) => {
       <div className="form-control">
         <label>Height Min: </label>
         <input 
-          type='text' 
+          type='number'
           placeholder="Add Min."
           value={heightMin}
           onChange={(e) => setHeightMin(e.target.value)}
@@ -31,7 +31,7 @@ const Filter = ({onFilter}) => {
       <div className="form-control">
         <label>Height Max: </label>
         <input 
-          type='text' 
+          type='number' 
           placeholder="Add Max."
           value={heightMax}
           onChange={(e) => setHeightMax(e.target.value)}
@@ -40,16 +40,16 @@ const Filter = ({onFilter}) => {
           <div className="form-control">
         <label>Mass Min: </label>
         <input 
-          type='text' 
+          type='number' 
           placeholder="Add Min."
           value={massMin}
           onChange={(e) => setMassMin(e.target.value)}
           />
       </div>
       <div className="form-control">
-        <label>Height From: </label>
+        <label>Mass Max: </label>
         <input 
-          type='text' 
+          type='number' 
           placeholder="Add Max."
           value={massMax}
           onChange={(e) => setMassMax(e.target.value)}
