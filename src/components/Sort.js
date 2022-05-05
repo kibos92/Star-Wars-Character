@@ -1,59 +1,82 @@
 import { useState } from 'react'
 
 const Sort = ({onSort}) => {
-    const [heightAsc, setHeightAsc] = useState('')
-    const [heightDesc, setHeightDesc] = useState('')
-    const [massAsc, setMassAsc] = useState('')
-    const [massDesc, setMassDesc] = useState('')
+    const [heightAsc, setHeightAsc] = useState(false)
+    const [heightDesc, setHeightDesc] = useState(false)
+    const [massAsc, setMassAsc] = useState(false)
+    const [massDesc, setMassDesc] = useState(false)
 
     const onSubmit = (e) => {
       e.preventDefault()
 
       onSort({heightAsc, heightDesc, massAsc, massDesc})
 
-      setHeightAsc('')
-      setHeightDesc('')
-      setMassAsc('')
-      setMassDesc('')
+      setHeightAsc(false)
+      setHeightDesc(false)
+      setMassAsc(false)
+      setMassDesc(false)
     }
     
   return (
     <form className="add-form" onSubmit={onSubmit}>
-      <div className="form-control">
-        <label>Height Ascending</label>
+      <div className="form-control-check">
+        <label className='form-control-check label'>Height Asc.</label>
         <input
           type='radio'
-          value={heightAsc}
-          checked={true}
-          onChange={(e) => setHeightAsc(e.target.value)}
+          value={true}
+          onChange={(e) => 
+            {setHeightAsc(Boolean(e.target.value)) 
+            setHeightDesc(false) 
+            setMassAsc(false)
+            setMassDesc(false)}
+          }
           name="sort"
+          className="form-control-check input"
         />
       </div>
-      <div className="form-control">
-        <label>Height Descending</label>
+      <div className="form-control-check">
+        <label className='form-control-check label'>Height Desc.</label>
         <input
           type='radio'
-          value={heightDesc}
-          onChange={(e) => setHeightDesc(e.target.value)}
+          value={true}
+          onChange={(e) => 
+            {setHeightDesc(Boolean(e.target.value))
+            setHeightAsc(false)
+            setMassAsc(false)
+            setMassDesc(false)}
+          }
           name="sort"
+          className="form-control-check input"
         />
       </div>
-      <div className="form-control">
-        <label>Mass Ascending</label>
+      <div className="form-control-check">
+        <label className='form-control-check label'>Mass Asc.</label>
         <input
           type='radio'
-          value={massAsc}
-          onChange={(e) => setMassAsc(e.target.value)}
+          value={true}
+          onChange={(e) => 
+            {setMassAsc(Boolean(e.target.value))
+            setHeightAsc(false)
+            setHeightDesc(false)
+            setMassDesc(false)}
+          }
           name="sort"
+          className="form-control-check input"
         />
       </div>
-      <div className="form-control">
-        <label>Mass Descending</label>
+      <div className="form-control-check">
+        <label className='form-control-check label'>Mass Desc.</label>
         <input
           type='radio'
-          value={massDesc}
-          onChange={(e) => setMassDesc(e.target.value)}
+          value={true}
+          onChange={(e) => 
+            {setMassDesc(Boolean(e.target.value))
+            setHeightAsc(false)
+            setHeightDesc(false)
+            setMassAsc(false)}
+          }
           name="sort"
+          className="form-control-check input"
         />
       </div>
       <input type='submit' value='Use Sort' className='btn btn-block' />
