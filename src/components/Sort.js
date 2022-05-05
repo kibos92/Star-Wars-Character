@@ -18,41 +18,42 @@ const Sort = ({onSort}) => {
     }
     
   return (
-    <form className='add-form' onSubmit={onSubmit}>
-      <div className='form-control form-control-check'>
+    <form className="add-form" onSubmit={onSubmit}>
+      <div className="form-control">
         <label>Height Ascending</label>
         <input
-          type='checkbox'
-          checked={heightAsc}
+          type='radio'
           value={heightAsc}
-          onChange={(e) => setHeightAsc(e.currentTarget.checked)}
+          checked={true}
+          onChange={(e) => setHeightAsc(e.target.value)}
+          name="sort"
         />
       </div>
-      <div className='form-control form-control-check'>
+      <div className="form-control">
         <label>Height Descending</label>
         <input
-          type='checkbox'
-          checked={heightDesc}
+          type='radio'
           value={heightDesc}
-          onChange={(e) => setHeightDesc(e.currentTarget.checked)}
+          onChange={(e) => setHeightDesc(e.target.value)}
+          name="sort"
         />
       </div>
-      <div className='form-control form-control-check'>
+      <div className="form-control">
         <label>Mass Ascending</label>
         <input
-          type='checkbox'
-          checked={massAsc}
+          type='radio'
           value={massAsc}
-          onChange={(e) => setMassAsc(e.currentTarget.checked)}
+          onChange={(e) => setMassAsc(e.target.value)}
+          name="sort"
         />
       </div>
-      <div className='form-control form-control-check'>
+      <div className="form-control">
         <label>Mass Descending</label>
         <input
-          type='checkbox'
-          checked={massDesc}
+          type='radio'
           value={massDesc}
-          onChange={(e) => setMassDesc(e.currentTarget.checked)}
+          onChange={(e) => setMassDesc(e.target.value)}
+          name="sort"
         />
       </div>
       <input type='submit' value='Use Sort' className='btn btn-block' />

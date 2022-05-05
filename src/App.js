@@ -64,6 +64,10 @@ const App = () => {
     })
     setCharacters(filteredCharacters)
   }
+
+  const sort = (sorts) => {
+    characters.sort()
+  }
  
   return (
     <Router>
@@ -83,7 +87,7 @@ const App = () => {
               <>
                 {showAddCharacter && <AddCharacter onAdd={addCharacter} />}
                 {showFilterCharacter && <Filter onFilter={filter} />}
-                {showSortCharacter && <Sort onSort={Sort} />}
+                {showSortCharacter && <Sort onSort={sort} />}
                 {characters.length > 0 ? (
                   <Characters
                     characters={characters}
