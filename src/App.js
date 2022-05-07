@@ -65,8 +65,21 @@ const App = () => {
     setCharacters(filteredCharacters)
   }
 
-  const sort = (sorts) => {
-    characters.sort()
+  const sortCharacters = (sorts) => {
+    let sortedCharacters
+     if (sorts.heightAsc === true){
+       sortedCharacters = characters.sort((a, b) => a.height - b.height)
+     }
+     else if (sorts.heightDesc === true){
+       sortedCharacters = characters.sort((a, b) => b.height - a.height)
+     }
+     else if (sorts.massAsc === true){
+       sortedCharacters = characters.sort((a, b) => a.mass - b.mass)
+     }
+     else if (sorts.massDesc === true){
+       sortedCharacters =  characters.sort((a, b) => b.mass - a.mass)
+     }
+    setCharacters([...sortedCharacters])
   }
  
   return (
@@ -87,7 +100,7 @@ const App = () => {
               <>
                 {showAddCharacter && <AddCharacter onAdd={addCharacter} />}
                 {showFilterCharacter && <Filter onFilter={filter} />}
-                {showSortCharacter && <Sort onSort={sort} />}
+                {showSortCharacter && <Sort onSort={sortCharacters} />}
                 {characters.length > 0 ? (
                   <Characters
                     characters={characters}
